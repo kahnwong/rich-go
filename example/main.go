@@ -2,25 +2,27 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"time"
 
-	"github.com/hugolgst/rich-go/client"
+	"github.com/kahnwong/rich-go/client"
 )
 
 func main() {
-	err := client.Login("DISCORD_APP_ID")
+	err := client.Login(os.Getenv("DISCORD_APP_ID"))
 	if err != nil {
 		panic(err)
 	}
 
 	now := time.Now()
 	err = client.SetActivity(client.Activity{
-		State:      "Heyy!!!",
-		Details:    "I'm running on rich-go :)",
-		LargeImage: "largeimageid",
-		LargeText:  "This is the large image :D",
-		SmallImage: "smallimageid",
-		SmallText:  "And this is the small image",
+		ActivityType: client.ActivityTypes.Playing,
+		State:        "Heyy!!!",
+		Details:      "I'm running on rich-go :)",
+		LargeImage:   "largeimageid",
+		LargeText:    "This is the large image :D",
+		SmallImage:   "smallimageid",
+		SmallText:    "And this is the small image",
 		Party: &client.Party{
 			ID:         "-1",
 			Players:    15,

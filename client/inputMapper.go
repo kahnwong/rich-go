@@ -4,8 +4,28 @@ import (
 	"time"
 )
 
+type ActivityType struct {
+	Playing int
+	//STREAMING int
+	Listening int
+	Watching  int
+	//Custom    int
+	Competing int
+}
+
+var ActivityTypes = ActivityType{
+	Playing: 0,
+	//STREAMING: 1,
+	Listening: 2,
+	Watching:  3,
+	//Custom:    4,
+	Competing: 5,
+}
+
 // Activity holds the data for discord rich presence
 type Activity struct {
+	// Activity type: <https://discord.com/developers/docs/game-sdk/activities#data-models-activitytype-enum>
+	ActivityType int
 	// What the player is currently doing
 	Details string
 	// The user's current party status
@@ -66,6 +86,7 @@ type Secrets struct {
 
 func mapActivity(activity *Activity) *PayloadActivity {
 	final := &PayloadActivity{
+		Type:    activity.ActivityType,
 		Details: activity.Details,
 		State:   activity.State,
 		Assets: PayloadAssets{

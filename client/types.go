@@ -17,13 +17,15 @@ type Args struct {
 }
 
 type PayloadActivity struct {
-	Details    string             `json:"details,omitempty"`
-	State      string             `json:"state,omitempty"`
-	Assets     PayloadAssets      `json:"assets,omitempty"`
-	Party      *PayloadParty      `json:"party,omitempty"`
-	Timestamps *PayloadTimestamps `json:"timestamps,omitempty"`
-	Secrets    *PayloadSecrets    `json:"secrets,omitempty"`
-	Buttons    []*PayloadButton   `json:"buttons,omitempty"`
+	Type          int                `json:"type,omitempty"`
+	ApplicationID string             `json:"application_id,omitempty"`
+	Details       string             `json:"details,omitempty"`
+	State         string             `json:"state,omitempty"`
+	Assets        PayloadAssets      `json:"assets,omitempty"`
+	Party         *PayloadParty      `json:"party,omitempty"`
+	Timestamps    *PayloadTimestamps `json:"timestamps,omitempty"`
+	Secrets       *PayloadSecrets    `json:"secrets,omitempty"`
+	Buttons       []*PayloadButton   `json:"buttons,omitempty"`
 }
 
 type PayloadAssets struct {
